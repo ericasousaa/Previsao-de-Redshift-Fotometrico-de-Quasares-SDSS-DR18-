@@ -147,4 +147,4 @@ Python · PyTorch · XGBoost · scikit-learn · Plotly · Matplotlib · SDSS DR1
 
 - Entender o problema antes de modelar é mais importante do que saber qual algoritmo usar
 - Dados ruins produzem modelos ruins: antes de ajustar qualquer hiperparâmetro vale checar se os dados fazem sentido, no meu caso o modelo só funcionou depois de corrigir a query SQL que estava retornando só quasares de z baixo
-- Um bug numa query SQL pode estragar completamente um modelo, os dados são tudo
+- Um modelo mais simples bem avaliado vale mais do que um modelo complexo mal interpretado: o XGBoost foi tão competitivo quanto a rede neural e muito mais fácil de explicar
