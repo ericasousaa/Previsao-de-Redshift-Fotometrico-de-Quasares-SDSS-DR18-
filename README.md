@@ -20,8 +20,8 @@ Medir ele com precisão nos diz a distância e a época em que a luz foi emitida
 
 ## Modelos
 
-- **XGBoost** — modelo baseline com gradient boosting
-- **MLP** — rede neural com 3 camadas (PyTorch)
+- **XGBoost** - modelo baseline com gradient boosting
+- **MLP** - rede neural com 3 camadas (PyTorch)
 
 ---
 
@@ -73,7 +73,7 @@ feature inútil: o modelo aprende relações não-lineares que esse gráfico nã
 
 ---
 
-### Importância de features — XGBoost
+### Importância de features - XGBoost
 
 **O que é:** mostra quais features o XGBoost mais usou para tomar decisões,
 medido pelo ganho médio nos splits das árvores.
@@ -88,7 +88,7 @@ em vez de usar magnitudes brutas foi correta.
 
 ---
 
-### Curva de aprendizado — MLP
+### Curva de aprendizado - MLP
 
 **O que é:** mostra como a loss de treino e validação evoluíram ao longo das épocas.
 O segundo painel mostra o gap entre as duas curvas.
@@ -146,5 +146,5 @@ Python · PyTorch · XGBoost · scikit-learn · Plotly · Matplotlib · SDSS DR1
 ## O que aprendi
 
 - Entender o problema antes de modelar é mais importante do que saber qual algoritmo usar
-- A divisão treino/validação/teste precisa ser estratificada, sem isso o modelo aprende uma distribuição errada
+- Dados ruins produzem modelos ruins: antes de ajustar qualquer hiperparâmetro vale checar se os dados fazem sentido, no meu caso o modelo só funcionou depois de corrigir a query SQL que estava retornando só quasares de z baixo
 - Um bug numa query SQL pode estragar completamente um modelo, os dados são tudo
