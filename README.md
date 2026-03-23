@@ -122,18 +122,37 @@ difíceis de classificar por ambiguidade no espaço de cores.
 
 ### Métricas por faixa de redshift
 
-**O que é:** sigma_NMAD e eta calculados separadamente para cada faixa de z,
-mostrando onde o modelo acerta e onde falha.
+### z_phot vs z_spec - XGBoost
 
-**Por que usar:** uma métrica global esconde problemas locais. Um modelo pode
-ter sigma_NMAD bom no geral mas ser péssimo em z alto, o que só aparece aqui.
+**O que é:** cada ponto é um quasar, onde o eixo x é o redshift real medido por
+espectroscopia e o eixo y é o que o modelo previu. A linha branca tracejada é a
+linha 1:1 (predição perfeita) e as linhas vermelhas marcam o limite de outlier
+catastrófico em ±0.15.
 
-![Métricas por bin](figures/metricas_por_bin.png)
+**Por que usar:** é o gráfico mais importante do campo de photo-z. Mostra de forma
+visual se o modelo está acertando em todo o range de z ou só em partes dele.
 
-O pico de erro em z~0.5 é o ponto mais problemático: as feições espectrais
-estão numa posição ambígua entre os filtros. De z=1.5 até z=3 os dois modelos
-ficam próximos da referência de 0.03. Em z alto as métricas melhoram porque
-os poucos objetos nessa faixa têm padrões de cor mais distintos.
+![z_phot vs z_spec XGBoost](figures/z_phot_VS_z_spec_xgboost.png)
+
+A nuvem está concentrada na linha 1:1 por todo o range de z, com maior densidade
+entre z=1 e z=2 onde há mais dados de treino. A dispersão aumenta em z alto,
+esperado dado o menor número de exemplos nessa faixa.
+
+---
+
+### z_phot vs z_spec - MLP
+
+**O que é:** mesmo gráfico do XGBoost, agora para a rede neural. Permite comparar
+visualmente qual modelo fica mais próximo da linha 1:1.
+
+**Por que usar:** comparar os dois gráficos lado a lado revela diferenças de
+comportamento que as métricas numéricas sozinhas não mostram.
+
+![z_phot vs z_spec MLP](figures/z_phot_VS_z_spec_MLP.png)
+
+O MLP apresenta dispersão levemente menor que o XGBoost, confirmando o sigma_NMAD
+mais baixo (0.098 vs 0.108). Os dois modelos têm dificuldade similar em z baixo
+(z~0.5), onde as cores dos quasares são mais ambíguas.
 
 ---
 
